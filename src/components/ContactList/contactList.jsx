@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getItems, getFilter } from 'redux/selectors';
+import { getItems, getFilter, getLoading } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
 
 export const ContactList = () => {
   const contacts = useSelector(getItems);
   const filter = useSelector(getFilter);
+  const isLoading = useSelector(getLoading);
   const dispatch = useDispatch();
 
   const visibleContact = contacts.filter(filters =>
@@ -22,7 +23,7 @@ export const ContactList = () => {
               onClick={() => dispatch(deleteContact(id))}
               className="btn-delete"
             >
-              Delete
+              {isLoading ? 'Deleting....' : 'Delete'}
             </button>
           </li>
         );
