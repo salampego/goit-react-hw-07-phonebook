@@ -20,8 +20,8 @@ export const contacts = createSlice({
     filter: '',
   },
   reducers: {
-    filterContact(state, action) {
-      state.filter = action.payload;
+    filterContact(state, { payload }) {
+      state.filter = payload;
     },
   },
   extraReducers: {
